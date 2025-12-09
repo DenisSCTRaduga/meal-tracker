@@ -27,6 +27,10 @@ const proteinProgress = computed(() => {
   return Math.min(100, Math.max(0, Math.round(percent)));
 });
 
+const updateDailyProtein = (value: string): void => {
+  dailyProtein.value = value;
+}
+
 const addMealHandler = (meal: Meal) => {
   addMeal(meal);
   isShowForm.value = false;
@@ -34,7 +38,7 @@ const addMealHandler = (meal: Meal) => {
 </script>
 
 <template>
-  <header-component />
+  <header-component @update:protein="updateDailyProtein" />
 
   <div class="container">
     <div class="my-4">

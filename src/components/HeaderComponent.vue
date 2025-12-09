@@ -1,6 +1,10 @@
 <script setup lang="ts">
 import { useProtein } from '../composables/useProtein.ts';
 
+const emits = defineEmits<{
+ "update:protein": [value: string]
+}>();
+
 const { dailyProtein } = useProtein();
 </script>
 
@@ -12,6 +16,7 @@ const { dailyProtein } = useProtein();
     type="number"
     input-align="right"
     suffix="г"
+    @input="emits('update:protein', dailyProtein)"
   />
 </template>
 
